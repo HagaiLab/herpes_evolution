@@ -1,0 +1,42 @@
+## COMMAND LINES ##
+
+GUIDANCE2:
+# To obtain MSAs:
+perl guidance.pl -seqFile [input sequences] --msaProgram MAFFT --seqType codon --outDir [output file] --proc_num 10
+
+# To mask low score residues:
+perl maskLowScoreResidues.pl [MSA.MAFFT.aln.With_Names file] [MSA.MAFFT.Guidance2_res_pair_res.scr file] [output_file] 0.9 nuc
+
+## hyphy (all other parameters are left as the defaults)
+GARD:
+hyphy gard --alignment [MSA] --tree [tree] --output [output]
+
+SLAC:
+hyphy slac --alignment [MSA] --tree [tree] --output [output]
+
+FEL:
+hyphy fel --alignment [MSA] --tree [tree] --output [output]
+
+## in case of recombination breakpoints detected by GARD, for SLAC and FEL analyses MSAs and trees were replaced by the GARD output file "MSA.best-gard"
+
+
+PhyML:
+# To obtain phylogenetic trees:
+phyML -i MSA -m GTR -a
+
+AlphaFold:
+# To obtain viral proteins' PDB files
+# We used the following github link in order to download and install alphafold 2 https://github.com/kalininalab/alphafold_non_docker/tree/main
+# We then ran it on the datasets from 2020-05-14
+
+CSU:
+# Obtain structural data regarding a protein structure
+resc [PDB input file] [Residue number] [Chain]
+
+PICNIC:
+# To get a score of a protein's probability of being part of a viral condensate
+picnic False 'protein_pdbs/protein_x/' 'protein_x' False --path_fasta_file 'proteins_fasta/protein_x.fasta.txt' > 'output.txt'
+
+TM-Align:
+# To get a structural similarity score
+
