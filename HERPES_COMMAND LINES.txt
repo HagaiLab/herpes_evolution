@@ -27,14 +27,14 @@ phyML -i MSA -m GTR -a
 AlphaFold:
 # To obtain viral proteins' PDB files
 # We used the following github link in order to download and install alphafold 2 https://github.com/kalininalab/alphafold_non_docker/tree/main
-# We then ran it on the datasets from 2020-05-14
+# We then ran it with default parameters on the datasets from 2020-05-14
 
 CSU:
-# Obtain structural data regarding a protein structure
+# Obtain structural data regarding a protein structure (identifying surface and core residues and inter-residue contacts)
 resc [PDB input file] [Residue number] [Chain]
 
 PICNIC:
-# To get a score of a protein's probability of being part of a viral condensate
+# To get a score for a protein's probability of being part of a biomolecular condensate
 picnic False 'protein_pdbs/protein_x/' 'protein_x' False --path_fasta_file 'proteins_fasta/protein_x.fasta.txt' > 'output.txt'
 
 TM-Align:
