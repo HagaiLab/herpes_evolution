@@ -39,4 +39,6 @@ picnic False 'protein_pdbs/protein_x/' 'protein_x' False --path_fasta_file 'prot
 
 TM-Align:
 # To get a structural similarity score
+TMalign [PDB 1 path]  [PDB2 path] > [output.txt]
+
 
